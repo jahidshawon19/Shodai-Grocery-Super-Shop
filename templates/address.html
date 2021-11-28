@@ -1,0 +1,45 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'secondary_header.html' %}
+<!-- HEADER SECTION END  -->
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3>Customer: <span class="text-warning">{{request.user}}</span></h3>
+                <a href="{% url 'profile' %}" class="text-primary"><h4>Add more address</h4></a>
+            </div>
+        </div>
+        <div class="row">
+            
+            {% for a in customer_address %}
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-header">
+                      Address-{{forloop.counter}}
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title">Name: </h5><span>{{a.name}}</span>
+                      <h5 class="card-title">Phone: </h5><span>{{a.phone}}</span>
+                      <h5 class="card-title">Email: </h5><span>{{a.email}}</span>
+                      <h5 class="card-title">Address: </h5><span>{{a.address}}</span>
+                      <h5 class="card-title">Area: </h5><span>{{a.area}}</span>
+                      <h5 class="card-title">City: </h5><span>{{a.city}}</span>
+                      <h5 class="card-title">Zipcode: </h5><span>{{a.zipcode}}</span>
+                     
+                    </div>
+                  </div>
+            </div>
+        {% endfor %}
+         </div>
+    </div>
+</section>
+
+
+
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->

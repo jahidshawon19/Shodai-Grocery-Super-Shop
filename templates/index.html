@@ -1,0 +1,633 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'primary_header.html' %}
+<!-- HEADER SECTION END  -->
+	
+<!-- SLIDER SECTION START  -->
+{% include 'slider.html' %}
+<!-- SLIDER SECTION END  -->
+	
+	<!-- Start Small Banner  -->
+	<section class="small-banner section">
+		<div class="container-fluid">
+			<div class="row">
+				<!-- Single Banner  -->
+				<div class="col-lg-4 col-md-6 col-12">
+					<div class="single-banner">
+						<img src="{% static ''%}./images/small-banner-1.jpg" alt="#">
+				
+					</div>
+				</div>
+				<!-- /End Single Banner  -->
+				<!-- Single Banner  -->
+				<div class="col-lg-4 col-md-6 col-12">
+					<div class="single-banner">
+						<img src="{% static ''%}./images/small-banner-3.jpg" alt="#">
+					
+					</div>
+				</div>
+				<!-- /End Single Banner  -->
+				<!-- Single Banner  -->
+				<div class="col-lg-4 col-12">
+					<div class="single-banner tab-height">
+						<img src="{% static ''%}./images/small-banner-2.jpg" alt="#">
+						
+					</div>
+				</div>
+				<!-- /End Single Banner  -->
+			</div>
+		</div>
+	</section>
+	<!-- End Small Banner -->
+	
+	<!-- Start Grocery -->
+	<div class="product-area most-popular section">
+        <div class="container">
+            <div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Grocery Item</h2>
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="owl-carousel popular-slider">
+						{% for g in grocery_product %}
+						<!-- Start Single Product -->
+						<div class="single-product">
+							<div class="product-img">
+								<a href="{% url 'product-detail' g.id %}">
+									<img class="default-img" src="{{g.photo.url}}" alt="#">
+									<img class="hover-img" src="{{g.photo.url}} alt="#">
+									{% if g.offer %}
+									<span class="out-of-stock">Hot</span>
+									{% endif %}
+								</a>
+								<div class="button-head">
+									<div class="product-action">
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span></span></a>
+									</div>
+									<div class="product-action-2">
+										<a title="Add to cart" href="{% url 'product-detail' g.id %}">Details</a>
+									</div>
+								</div>
+							</div>
+							<div class="product-content">
+								<h3><a href="{% url 'product-detail' g.id %}">{{g.product_name}}</a></h3>
+								<div class="product-price">
+									<span class="old">BDT.{{g.selling_price}}</span>
+									<span>BDT.{{g.discounted_price}}</span>
+								</div>
+							</div>
+						</div>
+						<!-- End Single Product -->
+						{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- End Grocery -->
+
+
+		<!-- Start Rice -->
+		<div class="product-area most-popular section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Rice Item</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="owl-carousel popular-slider">
+							{% for r in rice_product %}
+							<!-- Start Single Product -->
+							<div class="single-product">
+								<div class="product-img">
+									<a href="{% url 'product-detail' r.id %}">
+										<img class="default-img" src="{{r.photo.url}}" alt="#">
+										<img class="hover-img" src="{{r.photo.url}}" alt="#">
+										{% if r.offer %}
+										<span class="out-of-stock">Hot</span>
+										{% endif %}
+									</a>
+									<div class="button-head">
+										<div class="product-action">
+											<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+											<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+											<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+										</div>
+										<div class="product-action-2">
+											<a title="Add to cart" href="{% url 'product-detail' r.id %}">Details</a>
+										</div>
+									</div>
+								</div>
+								<div class="product-content">
+									<h3><a href="{% url 'product-detail' r.id %}">{{r.product_name}}</a></h3>
+									<div class="product-price">
+										<span class="old">BDT.{{r.selling_price}}</span>
+										<span>BDT.{{r.discounted_price}}</span>
+									</div>
+								</div>
+							</div>
+							<!-- End Single Product -->
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Rice -->
+
+	<!-- Start Fish -->
+	<div class="product-area most-popular section">
+        <div class="container">
+            <div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Fish Item</h2>
+					</div>
+				</div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="owl-carousel popular-slider">
+
+						{% for f in fish_product %}
+						<!-- Start Single Product -->
+						<div class="single-product">
+                            <div class="product-img">
+                                <a href="{% url 'product-detail' f.id %}">
+                                    <img class="default-img" src="{{f.photo.url}}" alt="#">
+                                    <img class="hover-img" src="{{f.photo.url}}" alt="#">
+                                </a>
+								<div class="button-head">
+									<div class="product-action">
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+										<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+									</div>
+									<div class="product-action-2">
+										<a title="Add to cart" href="{% url 'product-detail' f.id %}">Details</a>
+									</div>
+								</div>
+                            </div>
+                            <div class="product-content">
+                                <h3><a href="{% url 'product-detail' f.id %}">{{f.product_name}}</a></h3>
+                                <div class="product-price">
+									<span class="old">BDT.{{f.selling_price}}</span>
+									<span>BDT.{{f.discounted_price}}</span>
+                                </div>
+                            </div>
+                        </div>
+						<!-- End Single Product -->
+						{% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	<!-- End Fish -->
+
+
+		<!-- Start Meat -->
+		<div class="product-area most-popular section">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>Meat Item</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="owl-carousel popular-slider">
+	
+							{% for m in mp %}
+							<!-- Start Single Product -->
+							<div class="single-product">
+								<div class="product-img">
+									<a href="{% url 'product-detail' m.id %}">
+										<img class="default-img" src="{{m.photo.url}}" alt="#">
+										<img class="hover-img" src="{{m.photo.url}}" alt="#">
+									</a>
+									<div class="button-head">
+										<div class="product-action">
+											<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+											<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+											<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+										</div>
+										<div class="product-action-2">
+											<a title="Add to cart" href="{% url 'product-detail' m.id %}">Details</a>
+										</div>
+									</div>
+								</div>
+								<div class="product-content">
+									<h3><a href="{% url 'product-detail' m.id %}">{{m.product_name}}</a></h3>
+									<div class="product-price">
+										<span class="old">BDT.{{m.selling_price}}</span>
+										<span>BDT.{{m.discounted_price}}</span>
+									</div>
+								</div>
+							</div>
+							<!-- End Single Product -->
+							{% endfor %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Meat -->
+
+
+
+				<!-- Start Vegetables -->
+				<div class="product-area most-popular section">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="section-title">
+									<h2>Vegetables Item</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div class="owl-carousel popular-slider">
+			
+									{% for v in vp %}
+									<!-- Start Single Product -->
+									<div class="single-product">
+										<div class="product-img">
+											<a href="{% url 'product-detail' v.id %}">
+												<img class="default-img" src="{{v.photo.url}}" alt="#">
+												<img class="hover-img" src="{{v.photo.url}}" alt="#">
+											</a>
+											<div class="button-head">
+												<div class="product-action">
+													<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+													<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+													<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												</div>
+												<div class="product-action-2">
+													<a title="Add to cart" href="{% url 'product-detail' v.id %}">Details</a>
+												</div>
+											</div>
+										</div>
+										<div class="product-content">
+											<h3><a href="{% url 'product-detail' v.id %}">{{v.product_name}}</a></h3>
+											<div class="product-price">
+												<span class="old">BDT.{{v.selling_price}}</span>
+												<span>BDT.{{v.discounted_price}}</span>
+											</div>
+										</div>
+									</div>
+									<!-- End Single Product -->
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Vegetables -->
+
+	
+				<!-- Start household -->
+				<div class="product-area most-popular section">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="section-title">
+									<h2>Household & Clean</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div class="owl-carousel popular-slider">
+			
+									{% for h in hp %}
+									<!-- Start Single Product -->
+									<div class="single-product">
+										<div class="product-img">
+											<a href="{% url 'product-detail' h.id %}">
+												<img class="default-img" src="{{h.photo.url}}" alt="#">
+												<img class="hover-img" src="{{h.photo.url}}" alt="#">
+											</a>
+											<div class="button-head">
+												<div class="product-action">
+													<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+													<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+													<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												</div>
+												<div class="product-action-2">
+													<a title="Add to cart" href="{% url 'product-detail' h.id %}">Details</a>
+												</div>
+											</div>
+										</div>
+										<div class="product-content">
+											<h3><a href="{% url 'product-detail' h.id %}">{{h.product_name}}</a></h3>
+											<div class="product-price">
+												<span class="old">BDT.{{h.selling_price}}</span>
+												<span>BDT.{{h.discounted_price}}</span>
+											</div>
+										</div>
+									</div>
+									<!-- End Single Product -->
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Household -->
+
+				<!-- Start dairy -->
+				<div class="product-area most-popular section">
+					<div class="container">
+						<div class="row">
+							<div class="col-12">
+								<div class="section-title">
+									<h2>Dairy Item</h2>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-12">
+								<div class="owl-carousel popular-slider">
+			
+									{% for d in dp %}
+									<!-- Start Single Product -->
+									<div class="single-product">
+										<div class="product-img">
+											<a href="{% url 'product-detail' d.id %}">
+												<img class="default-img" src="{{d.photo.url}}" alt="#">
+												<img class="hover-img" src="{{d.photo.url}}" alt="#">
+											</a>
+											<div class="button-head">
+												<div class="product-action">
+													<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+													<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+													<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+												</div>
+												<div class="product-action-2">
+													<a title="Add to cart" href="{% url 'product-detail' d.id %}">Details</a>
+												</div>
+											</div>
+										</div>
+										<div class="product-content">
+											<h3><a href="{% url 'product-detail' d.id %}">{{d.product_name}}</a></h3>
+											<div class="product-price">
+												<span class="old">BDT.{{d.selling_price}}</span>
+												<span>BDT.{{d.discounted_price}}</span>
+											</div>
+										</div>
+									</div>
+									<!-- End Single Product -->
+									{% endfor %}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End dairy -->
+
+							<!-- Start Beverage -->
+							<div class="product-area most-popular section">
+								<div class="container">
+									<div class="row">
+										<div class="col-12">
+											<div class="section-title">
+												<h2>Beverage Item</h2>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="owl-carousel popular-slider">
+						
+												{% for b in bp %}
+												<!-- Start Single Product -->
+												<div class="single-product">
+													<div class="product-img">
+														<a href="{% url 'product-detail' b.id %}">
+															<img class="default-img" src="{{b.photo.url}}" alt="#">
+															<img class="hover-img" src="{{b.photo.url}}" alt="#">
+														</a>
+														<div class="button-head">
+															<div class="product-action">
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+															</div>
+															<div class="product-action-2">
+																<a title="Add to cart" href="{% url 'product-detail' b.id %}">Details</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<h3><a href="{% url 'product-detail' b.id %}">{{b.product_name}}</a></h3>
+														<div class="product-price">
+															<span class="old">BDT.{{b.selling_price}}</span>
+															<span>BDT.{{b.discounted_price}}</span>
+														</div>
+													</div>
+												</div>
+												<!-- End Single Product -->
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End beverage -->
+			
+							<!-- Start backery -->
+							<div class="product-area most-popular section">
+								<div class="container">
+									<div class="row">
+										<div class="col-12">
+											<div class="section-title">
+												<h2>Backery Item</h2>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-12">
+											<div class="owl-carousel popular-slider">
+						
+												{% for bc in bk %}
+												<!-- Start Single Product -->
+												<div class="single-product">
+													<div class="product-img">
+														<a href="{% url 'product-detail' bc.id %}">
+															<img class="default-img" src="{{bc.photo.url}}" alt="#">
+															<img class="hover-img" src="{{bc.photo.url}}" alt="#">
+														</a>
+														<div class="button-head">
+															<div class="product-action">
+																<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+																<a title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add to Compare</span></a>
+															</div>
+															<div class="product-action-2">
+																<a title="Add to cart" href="{% url 'product-detail' bc.id %}">Details</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<h3><a href="{% url 'product-detail' bc.id %}">{{f.product_name}}</a></h3>
+														<div class="product-price">
+															<span class="old">BDT.{{bc.selling_price}}</span>
+															<span>BDT.{{bc.discounted_price}}</span>
+														</div>
+													</div>
+												</div>
+												<!-- End Single Product -->
+												{% endfor %}
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- End backery -->
+
+
+	
+	<!-- Start Midium Banner  -->
+	<section class="midium-banner">
+		<div class="container">
+			<div class="row">
+				<!-- Single Banner  -->
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="single-banner">
+						<img src="{% static ''%}./images/bg-slider-2.jpg" alt="#">
+						<div class="content">
+							<!-- <p>Man's Collectons</p>
+							<h3>Man's items <br>Up to<span> 50%</span></h3>
+							<a href="#">Shop Now</a> -->
+						</div>
+					</div>
+				</div>
+				<!-- /End Single Banner  -->
+				<!-- Single Banner  -->
+				<div class="col-lg-6 col-md-6 col-12">
+					<div class="single-banner">
+						<img src="{% static ''%}./images/bg-slider-3.jpg" alt="#">
+						<div class="content">
+							<!-- <p>shoes women</p>
+							<h3>mid season <br> up to <span>70%</span></h3>
+							<a href="#" class="btn">Shop Now</a> -->
+						</div>
+					</div>
+				</div>
+				<!-- /End Single Banner  -->
+			</div>
+		</div>
+	</section>
+	<!-- End Midium Banner -->
+	
+
+	
+	<!-- Start Shop Services Area -->
+	<section class="shop-services section home mt-5">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-rocket"></i>
+						<h4>Free shiping</h4>
+						<p>Orders over $100</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-reload"></i>
+						<h4>Free Return</h4>
+						<p>Within 30 days returns</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-lock"></i>
+						<h4>Sucure Payment</h4>
+						<p>100% secure payment</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+				<div class="col-lg-3 col-md-6 col-12">
+					<!-- Start Single Service -->
+					<div class="single-service">
+						<i class="ti-tag"></i>
+						<h4>Best Peice</h4>
+						<p>Guaranteed price</p>
+					</div>
+					<!-- End Single Service -->
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Services Area -->
+	
+	<!-- Start Shop Newsletter  -->
+	<section class="shop-newsletter section">
+		<div class="container">
+			<div class="inner-top">
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2 col-12">
+						<!-- Start Newsletter Inner -->
+						<div class="inner">
+							<h4>Newsletter</h4>
+							<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+							<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+								<input name="EMAIL" placeholder="Your email address" required="" type="email">
+								<button class="btn">Subscribe</button>
+							</form>
+						</div>
+						<!-- End Newsletter Inner -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- End Shop Newsletter -->
+	
+	<!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="ti-close" aria-hidden="true"></span></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+							<div class="col-lg-6 offset-lg-3 col-12">
+								<h4 style="margin-top:100px;font-size:14px; font-weight:500; color:#F7941D; display:block; margin-bottom:5px;">Eshop Free Lite</h4>
+								<h3 style="font-size:30px;color:#333;">Currently You are using free lite Version of Eshop.<h3>
+								<p style="display:block; margin-top:20px; color:#888; font-size:14px; font-weight:400;">Please, purchase full version of the template to get all pages, features and commercial license</p>
+								<div class="button" style="margin-top:30px;">
+									<a href="https://wpthemesgrid.com/downloads/eshop-ecommerce-html5-template/" target="_blank" class="btn" style="color:#fff;">Buy Now!</a>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <!-- Modal end -->
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->

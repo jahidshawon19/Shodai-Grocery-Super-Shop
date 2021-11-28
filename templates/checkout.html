@@ -1,0 +1,138 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'secondary_header.html' %}
+<!-- HEADER SECTION END  -->
+	
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs">
+			<div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="bread-inner">
+							<ul class="bread-list">
+								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="blog-single.html">Checkout</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
+				
+		<!-- Start Checkout -->
+		<section class="shop checkout section">
+			<div class="container">
+				<div class="row"> 
+					<div class="col-lg-8">
+						<h3 class="text-secondary">Order Summery</h3>
+						<hr>
+						{% for item in cart_items %}
+						<div class="card p-2 bg-light text-dark mt-2">
+							<p><span style="color:coral; font-weight: 600;">Product: </span>{{item.product.product_name}}</p>
+							<p><span style="color:coral; font-weight: 600;">Quantity: </span> {{item.quantity}}</p>
+							<p><span style="color:coral; font-weight: 600;">Price: </span> {{item.total_cost}}</p>
+						</div>
+						{% endfor %}
+						<div class="alert alert-success text-center font-weight-bold mt-3 text-dark" role="alert">
+							Total Cost + 10 Taka = {{total_amount}} Taka
+						  </div>
+					</div>
+
+					<div class="col-lg-4">
+						<h3>Select Shipping Address </h3>
+						<hr>
+						<form action="/paymentdone">
+							{% for ad in address %}
+							<div class="card mt-1">
+								<div class="card-body ml-2">
+									<h6>{{ad.name}}</h6>
+									<p>{{ad.address}}</p>
+									<input type="radio" class="mt-2" value="{{ad.id}}" name="custid" id="custadd{{forloop.counter}}">
+									<label for="custadd{{forloop.counter}}" class="text-info">Address {{forloop.counter}}</label>	
+								</div>
+						
+							</div>
+							{% endfor %}
+							<button class="btn btn-warning mt-3" type="submit">Continue</button>
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+		</section>
+		<!--/ End Checkout -->
+		
+		<!-- Start Shop Services Area  -->
+		<section class="shop-services section home">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-rocket"></i>
+							<h4>Free shiping</h4>
+							<p>Orders over $100</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-reload"></i>
+							<h4>Free Return</h4>
+							<p>Within 30 days returns</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-lock"></i>
+							<h4>Sucure Payment</h4>
+							<p>100% secure payment</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+					<div class="col-lg-3 col-md-6 col-12">
+						<!-- Start Single Service -->
+						<div class="single-service">
+							<i class="ti-tag"></i>
+							<h4>Best Peice</h4>
+							<p>Guaranteed price</p>
+						</div>
+						<!-- End Single Service -->
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Shop Services -->
+		
+		<!-- Start Shop Newsletter  -->
+		<section class="shop-newsletter section">
+			<div class="container">
+				<div class="inner-top">
+					<div class="row">
+						<div class="col-lg-8 offset-lg-2 col-12">
+							<!-- Start Newsletter Inner -->
+							<div class="inner">
+								<h4>Newsletter</h4>
+								<p> Subscribe to our newsletter and get <span>10%</span> off your first purchase</p>
+								<form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+									<input name="EMAIL" placeholder="Your email address" required="" type="email">
+									<button class="btn">Subscribe</button>
+								</form>
+							</div>
+							<!-- End Newsletter Inner -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- End Shop Newsletter -->
+			
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->

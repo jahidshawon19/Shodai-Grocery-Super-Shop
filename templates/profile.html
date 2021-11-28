@@ -1,0 +1,36 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'secondary_header.html' %}
+<!-- HEADER SECTION END  -->
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-lg-12">
+                <h3>Welcome {{request.user}}</h3>
+                <form action="" method="POST">
+                   {% csrf_token %}
+           
+                    {% for fm in form %}
+                    <div class="form-group mb-3">
+                        {{fm.label_tag}} {{fm}} <small class="text-danger">{{fm.errors|striptags}}</small>
+                    </div>
+                    {% endfor %}
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{% url 'address' %}" class="text-warning">My Address</a>
+                    <br>
+                </form>
+            </div>
+        
+         </div>
+    </div>
+</section>
+
+
+
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->

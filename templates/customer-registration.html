@@ -1,0 +1,50 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'secondary_header.html' %}
+<!-- HEADER SECTION END  -->
+
+
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <form action="" method="POST">
+                   {% csrf_token %}
+
+                    {% if messages %}
+                        {% for m in messages %}
+                            <p {% if m.tags %} class="alert alert-{{m.tags}} mb-5" {% endif %}>
+                            {{m}}
+                            </p>
+                        {% endfor %}
+                    {% endif %}
+
+                    {% for fm in form %}
+                    <div class="form-group mb-3">
+                        {{fm.label_tag}} {{fm}} <small class="text-dajnger">{{fm.errors|striptags}}</small>
+                    </div>
+                    {% endfor %}
+                    <input type="submit" value="Submit" class="btn btn-primary btn-sm">
+                    <br>
+                    <div class="text-center text-primary">
+                        <small>Existing User? <a href="{% url 'login' %}" class="text-danger">Login Now</a></small>
+                    </div>
+                    {% if form.non_field_errors %}
+                    {% for error in form.non_field_errors %}
+                    <p class="alert alert-danger my-3">{{error}}</p>
+                    {% endfor %}
+                    {% endif %}
+                </form>
+            </div>
+            <div class="col-lg-3"></div>
+         </div>
+    </div>
+</section>
+
+
+
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->

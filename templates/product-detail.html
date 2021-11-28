@@ -1,0 +1,80 @@
+{% load static %}
+
+<!-- HEADER SECTION START  -->
+{% include 'secondary_header.html' %}
+<!-- HEADER SECTION END  -->
+
+
+<section class="py-5">
+    <div class="container">
+        {% if request.user.is_authenticated == False %}
+        <div class="alert alert-warning text-center" role="alert">
+            Please Log In Before Buy Product!
+          </div>
+          {% endif %}
+        <div class="row mt-5">
+            <div class="col-lg-4">
+                <img src="{{product.photo.url}}" alt="">
+            </div>
+            <div class="col-lg-4 border p-3">
+                <h4>{{product.product_name}}</h4>
+                <strong>Brand:</strong> <span class="text-success">{{product.brand}}</span>
+                <hr>
+                <p><strike>tk{{product.selling_price}}</strike></p>
+                <h5 class="text-success">tk {{product.discounted_price}}</h5>
+                <hr>
+                <div class="d-flex justify-content-between">
+                 
+                    {% if item_already_in_cart %}
+                        <a href="{% url 'show-cart'%}" class="btn btn-warning shadow px-5 py-2 ms-4">Go to Cart</a>
+                    
+                    {% else %}
+                    <form action="/add-to-cart">
+                    <input type="hidden" name="prod_id" value={{product.id}} id="prod_id">
+                    <button type="submit" class="bg-warning p-2 border-0 text-light">Add to Cart</button>
+                  </form>
+                  {% endif %}
+                  
+                   <!-- <button class="bg-warning p-2 border-0"><a href="{% url 'add-to-cart' %}" class="text-light" >Add to Cart</a></button> -->
+                   <button class="bg-primary p-2 border-0"><a href="{% url 'index' %}" class="text-light" >Continue Shopping</a></button>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="card">
+                    <div class="card-body d-flex justify-content-between">
+                     <h6><i class="fa fa-truck"></i> Home Delivery</h6>
+                     <h6>tk.10</h6>
+
+                    </div>
+                  </div>
+                  <div class="card">
+                    <div class="card-body">
+                        <h6><i class="fab fa-hand-holding-usd"></i> Cash on Delivery</h6>
+                    </div>
+                  </div>
+
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10">
+                <div class="card">
+                    <h5 class="card-header">Product Details </h5>
+                    <div class="card-body">
+
+                      <p class="card-text">{{product.product_description}}</p>
+
+                    </div>
+                  </div>
+            </div>
+            <div class="col-lg-1"></div>
+        </div>
+    </div>
+</section>
+
+
+
+ <!-- FOOTER SECTION START  -->
+ {% include 'footer.html' %}
+<!-- FOOTER SECTION END  -->
