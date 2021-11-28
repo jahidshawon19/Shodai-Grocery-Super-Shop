@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-qc3&o-50na&%#t(tkm-92tg%lq_x9islwg=%uj=eu%u%iyk(xh
 DEBUG = True
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shodai-grocery.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
