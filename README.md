@@ -22,4 +22,4 @@
 
 ### Live Link 
 
-https://shodai-grocery.herokuapp.com/
+coming soon...
